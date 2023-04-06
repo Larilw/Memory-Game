@@ -14,11 +14,6 @@ export default function Board() {
             <Card />
             <Card />
         </div>
-        <div className="rowBoard">
-            <Card />
-            <Card />
-            <Card />
-        </div>
     </>
     );
 }

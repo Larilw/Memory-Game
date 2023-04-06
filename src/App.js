@@ -1,18 +1,28 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import Card from './components/Card';
+import CardList from './components/CardList';
 import Board from './components/Board';
 
 function App() {
+  const [cardImages, setCardImages] = useState(CARD_IMAGES)
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          <Board></Board>
-        </p>
-      </header>
-    </div>
+    <CardList cardImages={cardImages} />
   );
 }
+
+const CARD_IMAGES = [
+  {
+    id: 1,
+    imageSource: './mario.png'
+  },
+  {
+    id: 2,
+    imageSource: './bowser.png'
+  },
+  {
+    id: 3,
+    imageSource: './box.png'
+  }
+]
 
 export default App;
