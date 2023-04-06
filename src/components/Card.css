@@ -1,0 +1,17 @@
+.card {
+    background-color: white;
+    height: 100px;
+    width: 80px;
+    border-radius: 10px;
+    border: 0;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    margin: 4px;
+    box-shadow: 1px 1px 1px 1px rgb(175, 175, 175);
+}
+
+.image{
+    height: 85px;
+    width: 78px;
+}
