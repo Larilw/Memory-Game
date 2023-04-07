@@ -5,8 +5,25 @@ import Board from './components/Board';
 
 function App() {
   const [cardImages, setCardImages] = useState(CARD_IMAGES)
+  const [count, setCount] = useState(0);
+
+  function handleRestart(){
+    setCount(0);
+  }
+
   return (
-    <CardList cardImages={cardImages} />
+    <div>
+      <CardList cardImages={cardImages} setCount={setCount} count={count}/>
+      <div>
+        <h1>
+          <text>Moves: </text>
+          {Math.floor(count/2)}
+          </h1>
+      </div>
+      <div>
+        <button onClick={handleRestart}>RESTART</button>
+      </div>
+    </div>
   );
 }
 
