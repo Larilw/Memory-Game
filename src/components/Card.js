@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Card.css';
 
 //Component that represents a card
-export default function Card( {card, setCount, count}){
+export default function Card( {card, setCount, count, bestCount, setBestCount, restart, setRestart}){
     const [flip, setFlip] = useState(false)
+
+    useEffect(function persistForm() {
+        if (restart) {
+            setFlip(false);
+            setRestart(false);
+        }
+      });
 
     function handleClick(){
         setFlip(!flip);
         setCount(count + 1);
+        if(count > bestCount) setBestCount(count);
     }
+
     return (
         <div 
             className={`card ${flip ? 'flip' : ''}`}
