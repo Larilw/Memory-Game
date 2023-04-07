@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
 import './App.css';
 import CardList from './components/CardList';
+import { CARD_IMAGES } from './Data';
 
 function App() {
-  const [cardImages, setCardImages] = useState(CARD_IMAGES)
   const [count, setCount] = useState(0);
   const [bestCount, setBestCount] = useState(0);
   const [restart, setRestart] = useState(false);
+  var numberCards;
+  var images;
+  
+  //Gets the number of cards according to the URL
+  const searchParams = new URLSearchParams(window.location.search);
+  numberCards = searchParams.get('cards');
+  
+  if(!numberCards){
+    numberCards = 6;
+  }
 
+  images = CARD_IMAGES.slice(0, numberCards);
+  images = images.concat(images);
+  
+  const [cardImages, setCardImages] = useState(images.sort(() => Math.random() - 0.5));
+  
   function handleRestart(){
     setCount(0);
     setRestart(true);
@@ -15,7 +30,7 @@ function App() {
   }
 
   function shuffleCardImages(){
-    setCardImages(CARD_IMAGES.sort(() => Math.random() - 0.5));
+    setCardImages(images.sort(() => Math.random() - 0.5));
   }
 
   return (
@@ -37,6 +52,8 @@ function App() {
         <h1>
           <text>Best Score: </text>
           {Math.floor(bestCount/2)}
+          <text> Number of Cards: </text>
+          {numberCards}
         </h1>
       </div>
       <div>
@@ -46,71 +63,5 @@ function App() {
   );
 }
 
-const CARD_IMAGES = [
-  {
-    id: 1,
-    imageSource: './mario.png'
-  },
-  {
-    id: 2,
-    imageSource: './bowser.png'
-  },
-  {
-    id: 3,
-    imageSource: './box.png'
-  },
-  {
-    id: 4,
-    imageSource: './daisy.png'
-  },
-  {
-    id: 5,
-    imageSource: './flower.png'
-  },
-  {
-    id: 6,
-    imageSource: './goomba.png'
-  },
-  {
-    id: 7,
-    imageSource: './green_mushroom.png'
-  },
-  {
-    id: 8,
-    imageSource: './koopa_troopa.png'
-  },
-  {
-    id: 9,
-    imageSource: './luigi.png'
-  },
-  {
-    id: 10,
-    imageSource: './mario.png'
-  },
-  {
-    id: 11,
-    imageSource: './peach.png'
-  },
-  {
-    id: 12,
-    imageSource: './red_mushroom.png'
-  },
-  {
-    id: 13,
-    imageSource: './star.png'
-  },
-  {
-    id: 14,
-    imageSource: './toad.png'
-  },
-  {
-    id: 15,
-    imageSource: './toadette.png'
-  },
-  {
-    id: 16,
-    imageSource: './yoshi.png'
-  }
-]
 
 export default App;
