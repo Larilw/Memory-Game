@@ -11,9 +11,16 @@ function App() {
   var images;
   
   //Gets the number of cards according to the URL
-  const searchParams = new URLSearchParams(window.location.search);
-  numberCards = searchParams.get('cards');
+  const params = new URLSearchParams(window.location.search);
+  numberCards = params.get('cards');
   
+  if(numberCards > 15){
+    alert('Number of cards exceeded limit. The max number of cards is 15, the game will open with default settings');
+    numberCards = 6;
+    params.set('cards', 6);
+    window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
+  }
+
   if(!numberCards){
     numberCards = 6;
   }
