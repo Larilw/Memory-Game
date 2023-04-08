@@ -20,14 +20,20 @@ function App() {
     params.set('cards', 6);
     window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
   }
-
+  
   if(!numberCards){
     numberCards = 6;
   }
-
-  images = CARD_IMAGES.slice(0, numberCards);
-  images = images.concat(images);
   
+  images = CARD_IMAGES.slice(0, numberCards);
+  const cardDuplicates = images.map((card) => ({
+    id: card.id + +numberCards,
+    imageSource: card.imageSource,
+    flipped: false,
+    matched: false
+  }));
+  
+  images = images.concat(cardDuplicates);
   const [cardImages, setCardImages] = useState(images.sort(() => Math.random() - 0.5));
   
   function handleRestart(){
@@ -42,8 +48,14 @@ function App() {
 
   return (
     <div className='app'>
+      <div className='title'>
+        <h1>Memory Game</h1>
+      </div>
+      <div className='subtitle'>
+        <h2>Theme</h2>
+      </div>
       <CardList 
-        cardImages={cardImages} 
+        cards={cardImages} 
         setCount={setCount} 
         count={count} 
         setBestCount={setBestCount} 
@@ -53,13 +65,13 @@ function App() {
       />
       <div>
         <h1>
-          <text>Moves: </text>
+          Moves:
           {Math.floor(count/2)}
         </h1>
         <h1>
-          <text>Best Score: </text>
+          Best Score:
           {Math.floor(bestCount/2)}
-          <text> Number of Cards: </text>
+          Number of Cards:
           {numberCards}
         </h1>
       </div>
