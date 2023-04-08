@@ -1,4 +1,0 @@
-.rowBoard {
-    justify-content: center;
-    grid-template-columns: repeat(3, calc(33.33% - 20px));
-  }

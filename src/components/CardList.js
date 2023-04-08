@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react';
 import './CardList.css'
 import Card from "./Card";
 
-export default function CardList( {cards, count, setCount, bestCount, setBestCount, restart, setRestart} ){
+export default function CardList( {cards, count, setCount, restart, setRestart, matchCount, setMatchCount} ){
     const [lastCard, setLastCard] = useState();
     const [flippedCardsCount, setFlippedCardsCount] = useState(0);
-    var matchCount = 0;
 
     useEffect(() => {
-        console.log(flippedCardsCount);
+        console.log(cards);
         if(flippedCardsCount == 2){
             const flippedCards = cards.filter(card => 
                 card.flipped === true &&
@@ -30,7 +29,7 @@ export default function CardList( {cards, count, setCount, bestCount, setBestCou
         if (matchingCards.length == 2) {
             cards[cards.indexOf(matchingCards[0])].matched = true;
             cards[cards.indexOf(matchingCards[1])].matched = true;
-            matchCount++;
+            setMatchCount(matchCount + 1);
         } else {
             cards[cards.indexOf(flippedCards[0])].flipped = false;
             cards[cards.indexOf(flippedCards[1])].flipped = false;
@@ -46,8 +45,6 @@ export default function CardList( {cards, count, setCount, bestCount, setBestCou
                     key={card.id} 
                     count={count} 
                     setCount={setCount} 
-                    bestCount={bestCount} 
-                    setBestCount={setBestCount}
                     restart={restart}
                     setRestart={setRestart}
                     setLastCard={setLastCard}

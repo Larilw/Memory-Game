@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Card.css';
 
 //Component that represents a card
-export default function Card( {card, setCount, count, bestCount, setBestCount, restart, setRestart, setLastCard, flippedCardsCount, setFlippedCardsCount}){
+export default function Card( {card, setCount, count, restart, setRestart, setLastCard, flippedCardsCount, setFlippedCardsCount}){
     const [flip, setFlip] = useState(false)
 
     useEffect(() => {
@@ -10,6 +10,7 @@ export default function Card( {card, setCount, count, bestCount, setBestCount, r
             setFlip(false);
             setRestart(false);
             card.flipped = false;
+            card.matched = false;
         }
       },[restart]);
 
@@ -20,13 +21,12 @@ export default function Card( {card, setCount, count, bestCount, setBestCount, r
     }, [card.flipped]);
 
     function handleClick(){
-        if(!flip){
+        if(!flip && flippedCardsCount != 2){
             setFlippedCardsCount(flippedCardsCount + 1);
             setFlip(!flip);
             card.flipped = true;
             setLastCard(card)
             setCount(count + 1);
-            if(count > bestCount) setBestCount(count);
         }
     }
 
