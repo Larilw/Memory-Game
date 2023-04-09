@@ -5,6 +5,7 @@ import './Card.css';
 export default function Card( {card, setCount, count, restart, setRestart, setLastCard, flippedCardsCount, setFlippedCardsCount}){
     const [flip, setFlip] = useState(false)
 
+    //Resets card arguments and flips card
     useEffect(() => {
         if (restart) {
             setFlip(false);
@@ -14,6 +15,7 @@ export default function Card( {card, setCount, count, restart, setRestart, setLa
         }
       },[restart]);
 
+    //Flips card 
     useEffect(() => {
         setTimeout(() => {
             setFlip(card.flipped);

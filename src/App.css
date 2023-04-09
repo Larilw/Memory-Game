@@ -1,4 +1,5 @@
 .app {
+  font-family: 'Dosis';
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -11,7 +12,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-left: 15rem;
+  padding: 1rem;
+  padding-block: 2rem;
+  box-shadow: 0rem 0rem 0.1rem 0.1rem rgb(209, 209, 209);
+  border-radius: 1rem;
+  background-color: white;
 }
 
 .stats {
@@ -20,4 +25,30 @@
   justify-content: center;
   align-items: center;
   padding-left: 5rem;
+}
+
+.restart {
+  font-family: 'Dosis';
+  color: white;
+  border-radius: 0.7rem;
+  border-width: 0.1rem;
+  font-size: 1.2rem;
+  padding: 0.4rem 1rem;
+  display: flex;
+  align-items: center;
+  background-color: rgb(78, 147, 236);
+  cursor: pointer;
+}
+
+.restartImage {
+  height: 1.9rem;
+  width: 2rem;
+}
+
+.title {
+  margin: -1rem;
+}
+
+.subtitle {
+  margin: -1rem;
 }

@@ -15,10 +15,9 @@ function App() {
   const params = new URLSearchParams(window.location.search);
   numberCards = params.get('cards');
 
+  //Sets the value of the best score
   useEffect(() => {
-    console.log(matchCount);
     if(matchCount == numberCards){
-      console.log("A");
       if(bestCount == 0){
         setBestCount(count);
       }
@@ -28,6 +27,7 @@ function App() {
     }
   }, [matchCount]);
   
+  //Checks if the number of cards on the URL is within limit, sets it to 6 if it isn't
   if(numberCards > 15){
     alert('Number of cards exceeded limit. The max number of cards is 15, the game will open with default settings');
     numberCards = 6;
@@ -35,11 +35,15 @@ function App() {
     window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
   }
   
+  //Sets the number of cards to 6 if the parameter isn't on the URL
   if(!numberCards){
     numberCards = 6;
   }
 
+  //Gets only the cards needed based on the parameter
   images = CARD_IMAGES.slice(0, numberCards);
+
+  //Duplicates the cards data
   const cardDuplicates = images.map((card) => ({
     id: card.id + +numberCards,
     imageSource: card.imageSource,
@@ -47,9 +51,13 @@ function App() {
     matched: false
   }));
   
+  //Concatenates the cards, originals and duplicates
   images = images.concat(cardDuplicates);
+
+  //Shuffles the cards data
   const [cardImages, setCardImages] = useState(images.sort(() => Math.random() - 0.5));
   
+  //Resets parameters and states
   function handleRestart(){
     setCount(0);
     setRestart(true);
@@ -57,6 +65,7 @@ function App() {
     setMatchCount(0);
   }
 
+  //Shuffles the cards data
   function shuffleCardImages(){
     setCardImages(images.sort(() => Math.random() - 0.5));
   }
@@ -64,10 +73,10 @@ function App() {
   return (
     <div className='app'>
       <div className='title'>
-        <h1>Memory Game</h1>
+        <h1>Super Mario</h1>
       </div>
       <div className='subtitle'>
-        <h2>Theme</h2>
+        <h2>Memory Game</h2>
       </div>
       <div className='game'>
         <CardList 
@@ -83,14 +92,15 @@ function App() {
         />
         <div className='stats'>
           <h1>
-            Moves:
-            {Math.floor(count/2)}
+              Moves: {Math.floor(count/2)}
           </h1>
           <h1>
-            Best Score:
-            {Math.floor(bestCount/2)}
+            Best Score: {Math.floor(bestCount/2)}
           </h1>
-          <button className='restart' onClick={handleRestart}>RESTART</button>
+          <button className='restart' onClick={handleRestart}>
+            <img className='restartImage' src='./sad_mario.png'/> 
+            RESTART
+          </button>
         </div>
       </div>
     </div>

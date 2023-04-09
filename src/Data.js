@@ -1,13 +1,14 @@
+//List of cards for the game
 export const CARD_IMAGES = [
     {
       id: 1,
-      imageSource: './mario.png',
+      imageSource: './boo.png',
       flipped: false,
       matched: false
     },
     {
       id: 2,
-      imageSource: './bowser.png',
+      imageSource: './peach.png',
       flipped: false,
       matched: false
     },
@@ -19,7 +20,7 @@ export const CARD_IMAGES = [
     },
     {
       id: 4,
-      imageSource: './daisy.png',
+      imageSource: './green_shell.png',
       flipped: false,
       matched: false
     },
@@ -43,25 +44,25 @@ export const CARD_IMAGES = [
     },
     {
       id: 8,
-      imageSource: './koopa_troopa.png',
+      imageSource: './daisy.png',
       flipped: false,
       matched: false
     },
     {
       id: 9,
-      imageSource: './luigi.png',
+      imageSource: './red_shell.png',
       flipped: false,
       matched: false
     },
     {
       id: 10,
-      imageSource: './mario.png',
+      imageSource: './luigi.png',
       flipped: false,
       matched: false
     },
     {
       id: 11,
-      imageSource: './peach.png',
+      imageSource: './mario.png',
       flipped: false,
       matched: false
     },

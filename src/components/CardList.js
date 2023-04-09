@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import './CardList.css'
 import Card from "./Card";
 
+//Component that's a list of all the cards
 export default function CardList( {cards, count, setCount, restart, setRestart, matchCount, setMatchCount} ){
     const [lastCard, setLastCard] = useState();
     const [flippedCardsCount, setFlippedCardsCount] = useState(0);
 
+    //Checks the list of flipped cards to verify match
     useEffect(() => {
-        console.log(cards);
         if(flippedCardsCount == 2){
             const flippedCards = cards.filter(card => 
                 card.flipped === true &&
@@ -21,7 +22,8 @@ export default function CardList( {cards, count, setCount, restart, setRestart, 
         }
     }, [flippedCardsCount]);
 
-
+    /* Compares the card images to verify match, sets matched parameter if they match or handles the parameters to 
+    flip the cards if they don't */
     function verifyMatch(flippedCards){
         let matchingCards = flippedCards.filter(card => 
             card.imageSource === lastCard.imageSource
@@ -39,7 +41,6 @@ export default function CardList( {cards, count, setCount, restart, setRestart, 
     return (
         <div className="board">
             {cards.map(card => {
-                //console.log(card)
                 return <Card 
                     card={card} 
                     key={card.id} 
