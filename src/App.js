@@ -28,8 +28,8 @@ function App() {
   }, [matchCount]);
   
   //Checks if the number of cards on the URL is within limit, sets it to 6 if it isn't
-  if(numberCards > 15){
-    alert('Number of cards exceeded limit. The max number of cards is 15, the game will open with default settings');
+  if(numberCards > 15 || numberCards < 1){
+    alert('Number of cards exceeded limit. The max number of cards is 15 and the min is 1, the game will open with default settings');
     numberCards = 6;
     params.set('cards', 6);
     window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
