@@ -27,6 +27,11 @@ function App() {
     }
   }, [matchCount]);
   
+  //Sets the number of cards to 6 if the parameter isn't on the URL
+  if(!numberCards){
+    numberCards = 6;
+  }
+  
   //Checks if the number of cards on the URL is within limit, sets it to 6 if it isn't
   if(numberCards > 15 || numberCards < 1){
     alert('Number of cards exceeded limit. The max number of cards is 15 and the min is 1, the game will open with default settings');
@@ -35,10 +40,6 @@ function App() {
     window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
   }
   
-  //Sets the number of cards to 6 if the parameter isn't on the URL
-  if(!numberCards){
-    numberCards = 6;
-  }
 
   //Gets only the cards needed based on the parameter
   images = CARD_IMAGES.slice(0, numberCards);

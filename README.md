@@ -11,13 +11,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 2. Go to the project directory:
 
 - ```console
-  cd memory-game
+  cd Memory-Game
   ```
 
 3. Install dependencies with the command:
 
 - ```console
-  npm install --force
+  npm install
   ```
 
 ---
@@ -27,7 +27,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1. Go to the project directory:
 
 - ```console
-  cd memory-game
+  cd Memory-Game
   ```
 
 2. Run:
